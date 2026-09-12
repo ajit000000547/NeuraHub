@@ -3,415 +3,394 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Neura AI - Modern AI Assistant Platform">
-    <title>Neura AI - AI Assistant</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <meta name="description" content="NeuraHub - AI Assistant Platform">
+    <title>NeuraHub - AI Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .hero {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 15px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .search-box button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .search-box button:hover {
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 50px;
+        }
+
+        .cta-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .cta-section p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .quick-btn {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 10px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            nav {
+                gap: 15px;
+                font-size: 14px;
+            }
+
+            .search-box {
+                flex-direction: column;
+            }
+
+            .cta-section {
+                padding: 30px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div id="app" class="app">
+    <div class="container">
         <!-- Header -->
-        <header class="header">
-            <div class="header-container">
-                <div class="header-left">
-                    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle sidebar menu" aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                    <div class="logo">
-                        <span class="logo-icon" aria-hidden="true">⚡</span>
-                        <span class="logo-text">Neura AI</span>
-                    </div>
+        <header>
+            <div class="header-content">
+                <div class="logo">
+                    ⚡ NeuraHub
                 </div>
-                <div class="header-right">
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme" title="Toggle theme">
-                        <span class="theme-icon">🌙</span>
-                    </button>
-                    <a href="pages/settings.html" class="icon-btn" aria-label="Settings" title="Settings">
-                        <span aria-hidden="true">⚙️</span>
-                    </a>
-                    <a href="pages/profile.html" class="icon-btn profile-btn" aria-label="User profile" title="Profile">
-                        <span class="avatar-mini" aria-hidden="true">A</span>
-                    </a>
-                </div>
+                <nav>
+                    <a href="#features">Features</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
             </div>
         </header>
 
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar" aria-label="Main navigation">
-            <nav class="sidebar-nav">
-                <a href="index.html" class="nav-link active" data-page="home" aria-current="page">
-                    <span class="nav-icon" aria-hidden="true">🏠</span>
-                    <span class="nav-text">Home</span>
-                </a>
-                <a href="pages/chat.html" class="nav-link" data-page="chat">
-                    <span class="nav-icon" aria-hidden="true">💬</span>
-                    <span class="nav-text">AI Chat</span>
-                </a>
-                <a href="pages/history.html" class="nav-link" data-page="history">
-                    <span class="nav-icon" aria-hidden="true">📜</span>
-                    <span class="nav-text">History</span>
-                </a>
-                <a href="pages/saved.html" class="nav-link" data-page="saved">
-                    <span class="nav-icon" aria-hidden="true">⭐</span>
-                    <span class="nav-text">Saved</span>
-                </a>
-                <a href="pages/help.html" class="nav-link" data-page="help">
-                    <span class="nav-icon" aria-hidden="true">❓</span>
-                    <span class="nav-text">Help</span>
-                </a>
-            </nav>
-        </aside>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Your AI Assistant Awaits</h1>
+            <p>Get instant answers, create content, solve problems - all with one AI</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="What do you want to ask...">
+                <button onclick="handleSearch()">Ask Now</button>
+            </div>
+        </section>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Hero Section -->
-            <section class="hero">
-                <div class="hero-content">
-                    <h1 class="hero-title">How can I help you today?</h1>
-                    <p class="hero-subtitle">Ask anything, learn something new, create content, solve problems and more.</p>
-                </div>
-            </section>
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <button class="quick-btn" onclick="selectAction('Study')">📚 Study</button>
+            <button class="quick-btn" onclick="selectAction('Code')">💻 Code</button>
+            <button class="quick-btn" onclick="selectAction('Write')">✍️ Write</button>
+            <button class="quick-btn" onclick="selectAction('Math')">🔢 Math</button>
+            <button class="quick-btn" onclick="selectAction('Research')">🔍 Research</button>
+            <button class="quick-btn" onclick="selectAction('Creative')">🎨 Creative</button>
+        </section>
 
-            <!-- Main AI Input -->
-            <section class="ai-input-section">
-                <div class="ai-input-container">
-                    <div class="ai-input-wrapper">
-                        <input 
-                            type="text" 
-                            class="ai-input" 
-                            id="homeInput"
-                            placeholder="Ask anything... (microphone support available)"
-                            maxlength="500"
-                            aria-label="Ask a question to Neura AI"
-                        >
-                        <button class="ai-input-send" id="homeInputBtn" aria-label="Send message">
-                            <span aria-hidden="true">➤</span>
-                        </button>
-                    </div>
-                </div>
-                <div id="inputError" class="error-message" role="alert" style="display: none;"></div>
-            </section>
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>AI Chat</h3>
+                <p>Talk to our advanced AI assistant anytime, anywhere</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <h3>Learn Anything</h3>
+                <p>Get detailed explanations on any topic</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💻</div>
+                <h3>Code Help</h3>
+                <p>Debug, optimize, and learn programming</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✍️</div>
+                <h3>Writing Assistant</h3>
+                <p>Improve your writing with AI suggestions</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>Creative Ideas</h3>
+                <p>Brainstorm and generate innovative ideas</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Get responses instantly, 24/7</p>
+            </div>
+        </section>
 
-            <!-- Quick Actions -->
-            <section class="quick-actions">
-                <h3 class="section-title">Quick Actions</h3>
-                <div class="quick-actions-grid">
-                    <button class="quick-action-btn" data-mode="Study" aria-label="Start study mode chat">
-                        <span class="action-icon" aria-hidden="true">📚</span>
-                        <span class="action-text">Study</span>
-                    </button>
-                    <button class="quick-action-btn" data-mode="Coding" aria-label="Start coding mode chat">
-                        <span class="action-icon" aria-hidden="true">💻</span>
-                        <span class="action-text">Coding</span>
-                    </button>
-                    <button class="quick-action-btn" data-mode="Writing" aria-label="Start writing mode chat">
-                        <span class="action-icon" aria-hidden="true">✍️</span>
-                        <span class="action-text">Writing</span>
-                    </button>
-                    <button class="quick-action-btn" data-mode="Math" aria-label="Start math mode chat">
-                        <span class="action-icon" aria-hidden="true">🔢</span>
-                        <span class="action-text">Math</span>
-                    </button>
-                    <button class="quick-action-btn" data-mode="Ideas" aria-label="Start ideas mode chat">
-                        <span class="action-icon" aria-hidden="true">💡</span>
-                        <span class="action-text">Ideas</span>
-                    </button>
-                    <button class="quick-action-btn" data-mode="Research" aria-label="Start research mode chat">
-                        <span class="action-icon" aria-hidden="true">🔍</span>
-                        <span class="action-text">Research</span>
-                    </button>
-                </div>
-            </section>
+        <!-- CTA Section -->
+        <section class="cta-section" id="about">
+            <h2>Why Choose NeuraHub?</h2>
+            <p>NeuraHub combines cutting-edge AI technology with a simple, intuitive interface to help you be more productive and creative than ever before.</p>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="startChat()">Start Chatting Now</button>
+                <button class="btn btn-secondary" onclick="scrollToFeatures()">Learn More</button>
+            </div>
+        </section>
 
-            <!-- Recent Chats -->
-            <section class="recent-section">
-                <h3 class="section-title">Recent Chats</h3>
-                <div class="recent-chats" id="recentChats" role="region" aria-label="Recent conversations">
-                    <!-- Dynamically populated from localStorage -->
-                </div>
-                <div id="emptyRecentMessage" class="empty-state" style="display: none;">
-                    <p>No recent chats. Start a conversation to see your history!</p>
-                </div>
-            </section>
-
-            <!-- Saved Items -->
-            <section class="saved-section">
-                <div class="saved-header">
-                    <h3 class="section-title">Saved</h3>
-                    <a href="pages/saved.html" class="view-all-link">View all →</a>
-                </div>
-                <div class="saved-items" id="savedItems" role="region" aria-label="Saved items">
-                    <!-- Dynamically populated from localStorage -->
-                </div>
-                <div id="emptySavedMessage" class="empty-state" style="display: none;">
-                    <p>No saved items yet. Save important responses for quick access!</p>
-                </div>
-            </section>
-
-            <!-- Features -->
-            <section class="features">
-                <h3 class="section-title">Features</h3>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">💬</div>
-                        <h4>AI Chat</h4>
-                        <p>Talk with intelligent AI assistant instantly</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">📚</div>
-                        <h4>Study</h4>
-                        <p>Learn new topics with interactive explanations</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">💻</div>
-                        <h4>Coding</h4>
-                        <p>Get help with programming and debugging</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">✍️</div>
-                        <h4>Writing</h4>
-                        <p>Improve your writing with AI suggestions</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">📁</div>
-                        <h4>Files</h4>
-                        <p>Upload and analyze documents and files</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">🎤</div>
-                        <h4>Voice</h4>
-                        <p>Speak naturally and get audio responses</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Footer -->
-            <footer class="footer">
-                <div class="footer-content">
-                    <div class="footer-logo">
-                        <span class="logo-icon" aria-hidden="true">⚡</span>
-                        <span>Neura AI</span>
-                    </div>
-                    <p class="footer-text">AI Assistant • Free to Use</p>
-                    <div class="footer-links">
-                        <a href="pages/help.html">Help</a>
-                        <a href="#privacy-policy">Privacy</a>
-                        <a href="#terms-of-service">Terms</a>
-                    </div>
-                </div>
-            </footer>
-        </main>
-
-        <!-- Mobile Bottom Navigation -->
-        <nav class="bottom-nav" id="bottomNav" aria-label="Mobile navigation">
-            <a href="index.html" class="bottom-nav-item active" aria-current="page">
-                <span class="nav-icon" aria-hidden="true">🏠</span>
-                <span class="nav-label">Home</span>
-            </a>
-            <a href="pages/chat.html" class="bottom-nav-item">
-                <span class="nav-icon" aria-hidden="true">💬</span>
-                <span class="nav-label">Chat</span>
-            </a>
-            <a href="pages/history.html" class="bottom-nav-item">
-                <span class="nav-icon" aria-hidden="true">📜</span>
-                <span class="nav-label">History</span>
-            </a>
-            <a href="pages/saved.html" class="bottom-nav-item">
-                <span class="nav-icon" aria-hidden="true">⭐</span>
-                <span class="nav-label">Saved</span>
-            </a>
-            <a href="pages/profile.html" class="bottom-nav-item">
-                <span class="nav-icon" aria-hidden="true">👤</span>
-                <span class="nav-label">Profile</span>
-            </a>
-        </nav>
+        <!-- Footer -->
+        <footer id="contact">
+            <p>&copy; 2024 NeuraHub. All rights reserved.</p>
+            <p>Built with ❤️ for your productivity</p>
+        </footer>
     </div>
 
-    <script src="js/storage.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/app.js"></script>
     <script>
-        // Configuration
-        const CONFIG = {
-            MAX_INPUT_LENGTH: 500,
-            VALID_MODES: ['Study', 'Coding', 'Writing', 'Math', 'Ideas', 'Research', 'General AI'],
-            CHAT_PAGE: 'pages/chat.html'
-        };
-
-        // Utility: Sanitize user input
-        function sanitizeInput(input) {
-            const div = document.createElement('div');
-            div.textContent = input;
-            return div.innerHTML;
-        }
-
-        // Utility: Validate chat mode
-        function isValidMode(mode) {
-            return CONFIG.VALID_MODES.includes(mode);
-        }
-
-        // Start chat with mode
-        function startChat(mode) {
-            if (!mode || !isValidMode(mode)) {
-                console.error('Invalid chat mode:', mode);
-                return;
-            }
-
-            const input = document.getElementById('homeInput').value.trim();
-            
-            // Store safely with sanitized input
-            localStorage.setItem('chatMode', mode);
-            localStorage.setItem('chatInput', sanitizeInput(input));
-            localStorage.setItem('chatTimestamp', new Date().toISOString());
-            
-            // Redirect to chat page
-            window.location.href = CONFIG.CHAT_PAGE;
-        }
-
-        // Load and display recent chats from localStorage
-        function loadRecentChats() {
-            const recentChatsContainer = document.getElementById('recentChats');
-            const emptyMessage = document.getElementById('emptyRecentMessage');
-            
-            try {
-                const recentChats = JSON.parse(localStorage.getItem('recentChats') || '[]');
-                
-                if (recentChats.length === 0) {
-                    emptyMessage.style.display = 'block';
-                    recentChatsContainer.innerHTML = '';
-                    return;
-                }
-
-                emptyMessage.style.display = 'none';
-                recentChatsContainer.innerHTML = recentChats
-                    .slice(0, 3) // Show only 3 most recent
-                    .map((chat, index) => `
-                        <a href="${CONFIG.CHAT_PAGE}?id=${chat.id}" class="recent-chat-card">
-                            <h4>${sanitizeInput(chat.title || 'Untitled Chat')}</h4>
-                            <p>${sanitizeInput(chat.preview || 'No preview available')}</p>
-                            <span class="timestamp">${chat.timestamp || 'Recently'}</span>
-                        </a>
-                    `)
-                    .join('');
-            } catch (error) {
-                console.error('Error loading recent chats:', error);
-                emptyMessage.style.display = 'block';
+        function handleSearch() {
+            const searchInput = document.getElementById('searchInput').value;
+            if (searchInput.trim()) {
+                console.log('Searching for:', searchInput);
+                alert('🎉 Search: ' + searchInput + '\n\nThis would send your query to the AI!');
+                startChat();
+            } else {
+                alert('Please enter something to search');
             }
         }
 
-        // Load and display saved items from localStorage
-        function loadSavedItems() {
-            const savedItemsContainer = document.getElementById('savedItems');
-            const emptyMessage = document.getElementById('emptySavedMessage');
-            
-            try {
-                const savedItems = JSON.parse(localStorage.getItem('savedItems') || '[]');
-                
-                if (savedItems.length === 0) {
-                    emptyMessage.style.display = 'block';
-                    savedItemsContainer.innerHTML = '';
-                    return;
-                }
-
-                emptyMessage.style.display = 'none';
-                savedItemsContainer.innerHTML = savedItems
-                    .slice(0, 3) // Show only 3 most recent
-                    .map((item, index) => `
-                        <div class="saved-item-card" role="article">
-                            <h4>${sanitizeInput(item.title || 'Untitled')}</h4>
-                            <p>${sanitizeInput(item.content || 'No content').substring(0, 100)}...</p>
-                            <span class="timestamp">${item.savedDate || 'Recently saved'}</span>
-                        </div>
-                    `)
-                    .join('');
-            } catch (error) {
-                console.error('Error loading saved items:', error);
-                emptyMessage.style.display = 'block';
-            }
+        function selectAction(action) {
+            console.log('Selected action:', action);
+            alert('🎯 Starting ' + action + ' mode!\n\nOpening chat interface...');
+            startChat();
         }
 
-        // Handle home input send
-        function handleHomeInputSend() {
-            const input = document.getElementById('homeInput').value.trim();
-            const errorDiv = document.getElementById('inputError');
-
-            // Clear previous errors
-            errorDiv.style.display = 'none';
-            errorDiv.textContent = '';
-
-            // Validation
-            if (!input) {
-                errorDiv.textContent = 'Please enter a question or prompt.';
-                errorDiv.style.display = 'block';
-                return;
-            }
-
-            if (input.length > CONFIG.MAX_INPUT_LENGTH) {
-                errorDiv.textContent = `Input too long. Maximum ${CONFIG.MAX_INPUT_LENGTH} characters allowed.`;
-                errorDiv.style.display = 'block';
-                return;
-            }
-
-            startChat('General AI');
+        function startChat() {
+            alert('💬 Chat interface coming soon!\n\nFeature in development');
         }
 
-        // Event Listeners
-        document.getElementById('homeInputBtn').addEventListener('click', handleHomeInputSend);
+        function scrollToFeatures() {
+            document.getElementById('features').scrollIntoView({ behavior: 'smooth' });
+        }
 
-        document.getElementById('homeInput').addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !e.shiftKey) {
-                e.preventDefault();
-                handleHomeInputSend();
+        // Enter key support
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                handleSearch();
             }
         });
 
-        // Quick action buttons - use event delegation
-        document.querySelectorAll('.quick-action-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const mode = e.currentTarget.getAttribute('data-mode');
-                startChat(mode);
-            });
-        });
-
-        // Hamburger menu toggle
-        document.getElementById('hamburgerBtn').addEventListener('click', () => {
-            const sidebar = document.getElementById('sidebar');
-            const btn = document.getElementById('hamburgerBtn');
-            sidebar.classList.toggle('open');
-            btn.setAttribute('aria-expanded', sidebar.classList.contains('open'));
-        });
-
-        // Theme toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-
-        // Load theme preference
-        function loadThemePreference() {
-            const theme = localStorage.getItem('theme') || 'light';
-            if (theme === 'dark') {
-                document.body.classList.add('dark-mode');
-            }
-        }
-
-        // Initialize page
-        function initPage() {
-            loadThemePreference();
-            loadRecentChats();
-            loadSavedItems();
-        }
-
-        // Run initialization when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPage);
-        } else {
-            initPage();
-        }
+        // Welcome message
+        console.log('Welcome to NeuraHub!');
     </script>
 </body>
 </html>
